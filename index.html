@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/purecss@2.0.5/build/pure-min.css"
+      integrity="sha384-LTIDeidl25h2dPxrB2Ekgc9c7sEC3CWGM6HeFmuDNUjX76Ert4Z4IY714dhZHPLd"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body>
@@ -11,6 +17,59 @@
       <h1>Hello World!</h1>
     </main>
     <div id="map"></div>
+
+    <form class="pure-form">
+      <fieldset>
+        <legend>A compact inline form</legend>
+        <input type="email" placeholder="Email" />
+        <div class="pure-menu pure-menu-horizontal">
+          <ul class="pure-menu-list">
+            <li
+              class="pure-menu-item pure-menu-has-children pure-menu-allow-hover"
+            >
+              <a href="#" class="pure-menu-link">Courses</a>
+              <ul class="pure-menu-children">
+                <li class="pure-menu-item">
+                  <a href="#" class="pure-menu-link"> Placement 100</a>
+                </li>
+                <li class="pure-menu-item">
+                  <a href="#" class="pure-menu-link">
+                    Complete Interview Preparation</a
+                  >
+                </li>
+                <li class="pure-menu-item">
+                  <a href="#" class="pure-menu-link"> Android Bootcamp</a>
+                </li>
+              </ul>
+            </li>
+            <li
+              class="pure-menu-item pure-menu-has-children pure-menu-allow-hover"
+              style="background-color: green"
+            >
+              <a href="#" class="pure-menu-link" style="color: white">
+                Contact US
+              </a>
+
+              <ul class="pure-menu-children">
+                <li class="pure-menu-item">
+                  <a href="#" class="pure-menu-link"> At Office </a>
+                </li>
+                <li class="pure-menu-item">
+                  <a href="#" class="pure-menu-link"> At Headquarter </a>
+                </li>
+                <li class="pure-menu-item">
+                  <a href="#" class="pure-menu-link"> Via mail </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <button type="submit" class="pure-button pure-button-primary">
+          Search
+        </button>
+      </fieldset>
+    </form>
+
     <!-- keep at bottom of body -->
     <script src="./assets/js/script.js"></script>
     <script
