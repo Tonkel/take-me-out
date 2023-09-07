@@ -155,6 +155,4 @@ function getWeather() {
   });
 }
 
-//INITIALIZE
-window.initMap = initMap;
-getLocation();
+// initialize 
