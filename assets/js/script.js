@@ -100,7 +100,7 @@ function createMarker(place) {
 
   google.maps.event.addListener(marker, "click", () => {
     infowindow.setContent(place.name || "");
-    infowindow.open(map);
+    infowindow.open(marker.map, marker);
   });
 }
 
