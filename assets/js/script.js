@@ -1,5 +1,6 @@
 //DATA
 var apiKey = "AIzaSyDMAjoIQZ_CJWBTz9m52oX-6WKhdK463GQ";
+var WeatherAPIKey = "6cf092f23b87fdf33fc57108faf70e1a";
 //this tests
 // var testApi = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=pizza&location=${latitude},${longitude}&radius=48280.3&type=restaurant&key=AIzaSyDMAjoIQZ_CJWBTz9m52oX-6WKhdK463GQ`;
 let map;
@@ -12,15 +13,19 @@ var longitude;
 //FUNCTIONS
 
 //get my current location
-if (navigator.geolocation) {
-  navigator.geolocation.getCurrentPosition(function (position) {
-    latitude = position.coords.latitude;
-    longitude = position.coords.longitude;
-    console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
-    findStuffNearLocation({ latitude, longitude });
-  });
-} else {
-  console.log("Geolocation is not supported by this browser.");
+function getLocation() {
+  if (navigator.geolocation) {
+    console.log("Getting location");
+    window.navigator.geolocation.getCurrentPosition(function (position) {
+      latitude = position.coords.latitude;
+      longitude = position.coords.longitude;
+      console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
+      findStuffNearLocation({ latitude, longitude });
+      getWeather();
+    });
+  } else {
+    console.log("Geolocation is not supported by this browser.");
+  }
 }
 
 //reload map
@@ -95,11 +100,34 @@ function createMarker(place) {
 
   google.maps.event.addListener(marker, "click", () => {
     infowindow.setContent(place.name || "");
-    infowindow.open(map);
+    infowindow.open(marker.map, marker);
   });
 }
 
 //create function to fetch api from google-places
 
+// start API call for Weather
+function getWeather() {
+  var weatherUrl =
+    "https://api.openweathermap.org/data/2.5/weather?lat=" +
+    latitude +
+    "&lon=" +
+    longitude +
+    "&appid=" +
+    WeatherAPIKey +
+    "&units=imperial";
+  console.log("getting weather");
+  fetch(weatherUrl).then(function (response) {
+    if (response.ok) {
+      console.log(response);
+      response.json().then(function (data) {
+        console.log(data);
+      });
+    } else {
+      alert("Error " + response.statusText);
+    }
+  });
+}
 //INITIALIZE
 window.initMap = initMap;
+getLocation();

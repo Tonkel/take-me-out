@@ -10,6 +10,10 @@
       integrity="sha384-LTIDeidl25h2dPxrB2Ekgc9c7sEC3CWGM6HeFmuDNUjX76Ert4Z4IY714dhZHPLd"
       crossorigin="anonymous"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body>
@@ -27,7 +31,6 @@
       </div>
       <div
         class="pure-menu pure-menu-horizontal pure-menu-scrollable custom-menu custom-menu-bottom custom-menu-tucked"
-        id="tuckedMenu"
       >
         <div class="custom-menu-screen"></div>
         <ul class="pure-menu-list">
@@ -45,6 +48,26 @@
     </div>
     <main></main>
     <div id="map"></div>
+
+    <div class="card">
+      <div class="card-content">
+        <div class="media">
+          <div class="media-left">
+            <figure class="image is-48x48">
+              <img
+                src="https://bulma.io/images/placeholders/96x96.png"
+                alt="Placeholder image"
+              />
+            </figure>
+          </div>
+          <div class="media-content">
+            <p class="title is-4">Current Weather</p>
+          </div>
+        </div>
+
+        <div class="content">High: Low: Humidity:</div>
+      </div>
+    </div>
 
     <form class="pure-form">
       <fieldset>
