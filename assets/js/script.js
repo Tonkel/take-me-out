@@ -10,6 +10,9 @@ let infowindow;
 var latitude;
 var longitude;
 
+//weather variables
+var currentWeather = document.querySelector("#currentWeather");
+var highLowHumidity = document.querySelector(".content");
 //FUNCTIONS
 
 //get my current location
@@ -122,12 +125,31 @@ function getWeather() {
       console.log(response);
       response.json().then(function (data) {
         console.log(data);
+
+        var currentTemp = data.main.temp;
+        currentWeather.textContent = "Current Temp: " + currentTemp;
+
+        var high = data.main.temp_max;
+        var low = data.main.temp_min;
+        var humidity = data.main.humidity;
+
+        highLowHumidity.innerHTML =
+          "High: " +
+          high +
+          "<br/>" +
+          "Low: " +
+          low +
+          "<br/>" +
+          "Humidity: " +
+          humidity +
+          "%";
       });
     } else {
       alert("Error " + response.statusText);
     }
   });
 }
+
 //INITIALIZE
 window.initMap = initMap;
 getLocation();
