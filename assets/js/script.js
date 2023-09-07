@@ -1,8 +1,6 @@
 //DATA
 var apiKey = "AIzaSyDMAjoIQZ_CJWBTz9m52oX-6WKhdK463GQ";
 var WeatherAPIKey = "6cf092f23b87fdf33fc57108faf70e1a";
-//this tests
-// var testApi = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=pizza&location=${latitude},${longitude}&radius=48280.3&type=restaurant&key=AIzaSyDMAjoIQZ_CJWBTz9m52oX-6WKhdK463GQ`;
 let map;
 let service;
 let infowindow;
@@ -10,6 +8,8 @@ let infowindow;
 var latitude;
 var longitude;
 
+//map element
+var mapEl = document.querySelector("#map");
 //weather variables
 var currentWeather = document.querySelector("#currentWeather");
 var highLowHumidity = document.querySelector(".content");
@@ -136,7 +136,8 @@ function radiusDisplay(event) {
   radiusLabel.innerHTML = label;
 }
 
-//create function to fetch api from google-places
+//create function to get route from current location to endpoint
+function getRoute() {}
 
 // start API call for Weather
 function getWeather() {
@@ -181,6 +182,61 @@ function getWeather() {
       alert("Error " + response.statusText);
     }
   });
+}
+
+//user interaction
+mapEl.addEventListener("click", function (event) {
+  var element = event.target;
+
+  if (element.matches("#marker-button")) {
+    var buttonEl = element;
+    var endPoint = buttonEl.textContent;
+
+    //get location in scope
+    window.navigator.geolocation.getCurrentPosition(function (position) {
+      latitude = position.coords.latitude;
+      longitude = position.coords.longitude;
+      LatLng = `${latitude},${longitude}`;
+      console.log(LatLng);
+
+      const directionsService = new google.maps.DirectionsService();
+      const directionsRenderer = new google.maps.DirectionsRenderer();
+      const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 15,
+        center: { lat: latitude, lng: longitude },
+      });
+      calculateAndDisplayRoute(
+        directionsService,
+        directionsRenderer,
+        LatLng,
+        endPoint
+      );
+      directionsRenderer.setMap(map);
+    });
+  }
+});
+
+//function to make route
+function calculateAndDisplayRoute(
+  directionsService,
+  directionsRenderer,
+  start,
+  endpoint
+) {
+  directionsService
+    .route({
+      origin: {
+        query: start,
+      },
+      destination: {
+        query: endpoint,
+      },
+      travelMode: google.maps.TravelMode.DRIVING,
+    })
+    .then((response) => {
+      directionsRenderer.setDirections(response);
+    })
+    .catch((e) => window.alert("Directions request failed due to " + e));
 }
 
 //INITIALIZE
