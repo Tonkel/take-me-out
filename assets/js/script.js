@@ -116,8 +116,8 @@ function createMarker(place) {
 var searchButton = document.getElementById("search-button");
 
 searchButton.addEventListener("click", function getResult() {
-  var click = document.querySelector("#input");
-  console.log(click.value);
+  var searchInput = document.querySelector("#input").value;
+  console.log(searchInput);
 });
 
 // Search Input Button ================ end
