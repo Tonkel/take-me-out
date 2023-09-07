@@ -13,6 +13,7 @@ var longitude;
 //weather variables
 var currentWeather = document.querySelector("#currentWeather");
 var highLowHumidity = document.querySelector(".content");
+var iconDisplay = document.querySelector("#iconImage");
 //FUNCTIONS
 
 //get my current location
@@ -148,6 +149,10 @@ function getWeather() {
           "Humidity: " +
           humidity +
           "%";
+
+        var icons = data.weather[0].icon;
+        iconDisplay.src =
+          "http://openweathermap.org/img/wn/" + icons + "@2x.png";
       });
     } else {
       alert("Error " + response.statusText);
