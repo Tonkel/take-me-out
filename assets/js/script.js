@@ -130,13 +130,4 @@ function getWeather() {
 }
 //INITIALIZE
 window.initMap = initMap;
-function init() {
-  getLocation();
-  if (latitude !== undefined && longitude !== undefined) {
-    //getWeather();
-  } else {
-    console.log("no weather for you");
-  }
-}
-init();
-// getLocation();
+getLocation();
