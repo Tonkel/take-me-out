@@ -98,9 +98,14 @@ function createMarker(place) {
     position: place.geometry.location,
   });
 
-  google.maps.event.addListener(marker, "click", () => {
-    infowindow.setContent(place.name || "");
-    infowindow.open(marker.map, marker);
+  google.maps.event.addListener(marker, "click", (event) => {
+    var contentString = `<h1> ${place.name} </h1> <p> Rating (0-5): ${place.rating} </p> <p> Price (0-4): ${place.price_level} </p> <p> Address: <button id="marker-button"> ${place.vicinity} </button> </p>`;
+
+    var infowindow = new google.maps.InfoWindow({
+      content: contentString,
+      ariaLabel: "Uluru",
+    });
+    infowindow.open({ anchor: marker, map });
   });
 }
 
