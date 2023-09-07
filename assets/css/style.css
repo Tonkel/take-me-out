@@ -28,3 +28,7 @@ fieldset {
 
 }
 
+.pure-menu-link {
+  color: black;
+  background-color: gold;
+}
