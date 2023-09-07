@@ -122,6 +122,20 @@ searchButton.addEventListener("click", function getResult() {
 
 // Search Input Button ================ end
 
+// radius button
+var radiusButtons = document.getElementsByClassName("radius-option");
+
+for (var i = 0; i < radiusButtons.length; i++) {
+  radiusButtons[i].addEventListener("click", radiusDisplay, false);
+}
+
+function radiusDisplay(event) {
+  event.preventDefault();
+  var label = this.id;
+  var radiusLabel = document.querySelector("#radiusLabel");
+  radiusLabel.innerHTML = label;
+}
+
 //create function to fetch api from google-places
 
 // start API call for Weather
