@@ -112,6 +112,15 @@ function createMarker(place) {
     infowindow.open({ anchor: marker, map });
   });
 }
+// Search Input Button ================ start
+var searchButton = document.getElementById("search-button");
+
+searchButton.addEventListener("click", function getResult() {
+  var click = document.querySelector("#input");
+  console.log(click.value);
+});
+
+// Search Input Button ================ end
 
 //create function to fetch api from google-places
 
