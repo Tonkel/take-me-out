@@ -48,3 +48,15 @@ fieldset {
 #iconImage {
   background-color: lightyellow;
 }
+
+.content {
+  background-color: yellowgreen;
+  display: flex;
+  padding: 20px;
+}
+
+#currentWeather {
+  background-color: yellowgreen;
+  display: flex;
+  padding: 20px;
+}
