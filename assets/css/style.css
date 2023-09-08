@@ -41,5 +41,10 @@ fieldset {
   display: block;
 }
 .text{
-  margin-left: 10px;
+  
+  text-align: center;
+  margin-top: 50px;
+}
+#firstQuestion{
+  margin-top: 150px;
 }
