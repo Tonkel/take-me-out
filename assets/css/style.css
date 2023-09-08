@@ -40,12 +40,7 @@ fieldset {
 .media {
   display: block;
 }
-.backgroundColor {
-  background-color: #447232 95% 100%;
-}
-
-footer {
-  padding: 1em;
-  text-align: center;
-  border-top: gray solid 3px;
+.backgroundColor{
+  
+  background-color: #447232 95% 100% ;
 }
