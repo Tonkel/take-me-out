@@ -267,5 +267,11 @@ footer {
   width: 40%;
   border-radius: 5px;
   text-align: center;
+  margin:auto;
+  margin: top 30px;
+  
+  
 
 }
+.faqStlying:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2)}
