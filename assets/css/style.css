@@ -30,6 +30,15 @@ fieldset {
   color: black;
   background-color: gold;
 }
+
+.navbar {
+  border-radius: 15px;
+}
+
+#tuckedMenu {
+  background-color: gold;
+}
+
 .card {
   display: contents;
 }
@@ -40,11 +49,28 @@ fieldset {
 .media {
   display: block;
 }
-.backgroundColor{
-  
-  background-color: #447232 95% 100% ;
+.backgroundColor {
+  background-color: #447232 95% 100%;
 }
 
 #iconImage {
   background-color: lightyellow;
+}
+
+#input {
+  border-radius: 10px;
+  margin: 3px;
+}
+
+#radiusLabel {
+  border-radius: 10px;
+  margin: 3px;
+}
+
+.radius-option:hover {
+  box-shadow: 0 0 10px rgb(97, 97, 97);
+}
+
+#search-button {
+  border-radius: 15px;
 }
