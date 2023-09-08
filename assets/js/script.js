@@ -239,6 +239,4 @@ function calculateAndDisplayRoute(
     .catch((e) => window.alert("Directions request failed due to " + e));
 }
 
-//INITIALIZE
-window.initMap = initMap;
-getLocation();
+// initialize 
