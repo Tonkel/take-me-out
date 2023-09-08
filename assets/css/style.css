@@ -40,3 +40,6 @@ fieldset {
 .media {
   display: block;
 }
+.text{
+  margin-left: 10px;
+}
