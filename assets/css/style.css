@@ -30,3 +30,13 @@ fieldset {
   color: black;
   background-color: gold;
 }
+.card {
+  display: contents;
+}
+.image {
+  width: 175px;
+  height: 175px;
+}
+.media {
+  display: block;
+}
