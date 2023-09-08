@@ -108,3 +108,10 @@ body {
   position: relative;
   box-sizing: border-box;
 }
+.card1 .menu .opener {
+  width: 2.5rem;
+  height: 2.5rem;
+  position: relative;
+  border-radius: 50%;
+  transition: background-color 100ms ease-in-out;
+}
