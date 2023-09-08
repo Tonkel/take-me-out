@@ -6,6 +6,7 @@
   min-height: 65vh;
   margin-left: 10px;
   margin-right: 10px;
+  margin-top: 10px;
 }
 
 #map::after {
@@ -238,8 +239,10 @@ footer {
 }
 
 #radiusLabel {
+  position: relative;
   border-radius: 10px;
   margin: 3px;
+  top: 2px;
 }
 
 .radius-option:hover {
@@ -247,7 +250,9 @@ footer {
 }
 
 #search-button {
+  position: relative;
   border-radius: 15px;
+  right: 673px;
 }
 
 .content {
