@@ -72,25 +72,28 @@ function findStuffNearLocation(location) {
         console.log(listItemName);
 
         var placeList = document.querySelector("#placeList");
-        var listPieceName = document.createElement("h3");
+        var listPieceName = document.createElement("h4");
         listPieceName.textContent = listItemName;
         placeList.appendChild(listPieceName);
 
         var listItemRating = results[i].rating;
 
         var ListPieceRating = document.createElement("p");
+        ListPieceRating.setAttribute("class", "placeinfo");
         ListPieceRating.textContent = "Rating: " + listItemRating;
         listPieceName.appendChild(ListPieceRating);
 
         var ListItemPrice = results[i].price_level;
 
         var ListPiecePrice = document.createElement("p");
+        ListPiecePrice.setAttribute("class", "placeinfo");
         ListPiecePrice.textContent = "Price: " + ListItemPrice;
         ListPieceRating.appendChild(ListPiecePrice);
 
         var listItemAddress = results[i].vicinity;
 
         var listPieceAddress = document.createElement("p");
+        listPieceAddress.setAttribute("class", "placeinfo");
         listPieceAddress.textContent = listItemAddress;
         ListPiecePrice.appendChild(listPieceAddress);
       }
