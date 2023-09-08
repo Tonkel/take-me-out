@@ -4,3 +4,8 @@ Simple overview of use/purpose.
 
 Description
 An in-depth paragraph about your project and overview of use.
+
+ex. Windows 10
+Installing
+How/where to download your program
+Any modifications needed to be made to files/folders
