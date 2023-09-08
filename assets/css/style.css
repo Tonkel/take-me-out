@@ -266,3 +266,20 @@ footer {
   display: flex;
   padding: 20px;
 }
+#placeList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+h4 {
+  border: yellow solid 3px;
+  background-color: lemonchiffon;
+  padding: 1em;
+  width: 20%;
+  border-radius: 10%;
+}
+
+.placeinfo {
+  padding: 0.5em;
+  font-weight: lighter;
+}
