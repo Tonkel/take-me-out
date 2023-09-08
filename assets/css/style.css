@@ -43,3 +43,25 @@ fieldset {
 .media {
   display: block;
 }
+body {
+  font-size: 16px;
+  color: #404040;
+  font-family: Montserrat, sans-serif;
+  background-color: style="background-color:powderblue;";
+  background-position: center;
+  background-attachment: center;
+  margin: 0;
+  padding: 2rem 0;
+  display:flex;
+  gap: 10px;
+  gap: 10px 20px; 
+  row-gap: 50px;
+  column-gap: 50px;
+  place-items: center;
+  box-sizing: border-box;
+  margin-left: 100px;
+  margin-top: 100px;
+  margin-right: 100px;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
