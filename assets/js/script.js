@@ -8,6 +8,12 @@ let infowindow;
 var latitude;
 var longitude;
 
+//radius label
+var radiusLabel = document.querySelector("#radiusLabel");
+// radius buttons
+var radiusButtons = document.getElementsByClassName("radius-option");
+// Search Input Button
+var searchButton = document.getElementById("search-button");
 //map element
 var mapEl = document.querySelector("#map");
 //weather variables
@@ -50,6 +56,39 @@ function findStuffNearLocation(location) {
     fields: ["name", "geometry"],
     type: ["restaurant"],
     radius: "20000",
+  };
+
+  service = new google.maps.places.PlacesService(map);
+  service.nearbySearch(request, (results, status) => {
+    console.log(results);
+    if (status === google.maps.places.PlacesServiceStatus.OK && results) {
+      for (let i = 0; i < results.length; i++) {
+        createMarker(results[i]);
+      }
+
+      map.setCenter(results[0].geometry.location);
+    }
+  });
+}
+
+//reload map with custom inputs
+function findMoreStuffNearLocation(location, radius, searchInput) {
+  const myLocation = new google.maps.LatLng(
+    location.latitude,
+    location.longitude
+  );
+
+  infowindow = new google.maps.InfoWindow();
+  map = new google.maps.Map(document.getElementById("map"), {
+    center: myLocation,
+    zoom: 15,
+  });
+
+  const request = {
+    location: myLocation,
+    fields: ["name", "geometry"],
+    type: [searchInput],
+    radius: radius,
   };
 
   service = new google.maps.places.PlacesService(map);
@@ -112,19 +151,32 @@ function createMarker(place) {
     infowindow.open({ anchor: marker, map });
   });
 }
-// Search Input Button ================ start
-var searchButton = document.getElementById("search-button");
 
+//create new map based on inputs
 searchButton.addEventListener("click", function getResult() {
+  //get inputs
   var searchInput = document.querySelector("#input").value;
-  console.log(searchInput);
+  var radius = radiusLabel.textContent;
+  //change radius input to meters
+  if (radius === "30-Miles") {
+    radius = "48280";
+  } else if (radius === "20-Miles") {
+    radius = "32187";
+  } else {
+    radius = "16093";
+  }
+  console.log(radius);
+  //get location
+  window.navigator.geolocation.getCurrentPosition(function (position) {
+    latitude = position.coords.latitude;
+    longitude = position.coords.longitude;
+  });
+  console.log(latitude, longitude);
+  //update map
+  findMoreStuffNearLocation({ latitude, longitude }, radius, searchInput);
 });
 
-// Search Input Button ================ end
-
-// radius button
-var radiusButtons = document.getElementsByClassName("radius-option");
-
+//choose radius
 for (var i = 0; i < radiusButtons.length; i++) {
   radiusButtons[i].addEventListener("click", radiusDisplay, false);
 }
@@ -239,6 +291,6 @@ function calculateAndDisplayRoute(
     .catch((e) => window.alert("Directions request failed due to " + e));
 }
 
-//INITIALIZE
+// initialize
 window.initMap = initMap;
 getLocation();
