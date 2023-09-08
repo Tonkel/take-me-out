@@ -1,5 +1,5 @@
 //DATA
-var apiKey = "AIzaSyDMAjoIQZ_CJWBTz9m52oX-6WKhdK463GQ";
+var apiKey = "AIzaSyDPexPrMoLM_7mv51Pvjmbf4k8qOELuREk";
 var WeatherAPIKey = "6cf092f23b87fdf33fc57108faf70e1a";
 let map;
 let service;
