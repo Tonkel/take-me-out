@@ -48,3 +48,7 @@ footer {
   text-align: center;
   border-top: grey solid 3px;
 }
+
+#iconImage {
+  background-color: lightyellow;
+}
