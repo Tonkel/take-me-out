@@ -92,8 +92,9 @@ function findStuffNearLocation(location) {
 
         var listItemAddress = results[i].vicinity;
 
-        var listPieceAddress = document.createElement("p");
+        var listPieceAddress = document.createElement("button");
         listPieceAddress.setAttribute("class", "placeinfo");
+        listPieceAddress.setAttribute("id", "marker-button");
         listPieceAddress.textContent = listItemAddress;
         ListPiecePrice.appendChild(listPieceAddress);
       }
@@ -155,8 +156,9 @@ function findMoreStuffNearLocation(location, radius, searchInput) {
 
         var listItemAddress = results[i].vicinity;
 
-        var listPieceAddress = document.createElement("p");
+        var listPieceAddress = document.createElement("button");
         listPieceAddress.setAttribute("class", "placeinfo");
+        listPieceAddress.setAttribute("id", "marker-button");
         listPieceAddress.textContent = listItemAddress;
         ListPiecePrice.appendChild(listPieceAddress);
       }
@@ -300,7 +302,7 @@ function getWeather() {
 }
 
 //user interaction
-mapEl.addEventListener("click", function (event) {
+document.addEventListener("click", function (event) {
   var element = event.target;
 
   if (element.matches("#marker-button")) {
