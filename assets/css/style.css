@@ -281,49 +281,55 @@ h4 {
   padding: 1em;
   width: 20%;
   border-radius: 10%;
+  display: flex;
+  flex-direction: column;
 }
 
 .placeinfo {
-  padding: 0.5em;
   font-weight: lighter;
+  flex-direction: column;
 }
-.faqStlying{
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+.faqStlying {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   width: 40%;
   border-radius: 5px;
   text-align: center;
-  margin:auto;
+  margin: auto;
   margin: top 30px;
   background-color: lemonchiffon;
-  
-  
-
 }
 .faqStlying:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2)}
-  
-  
-  #lineStyling{
-    text-align: left;
-  }
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
 
-  #titleFaq{
-    text-align: center;
-    margin-top: 50PX;
-    margin-bottom: 50PX;
-  }
+#lineStyling {
+  text-align: left;
+}
 
+#titleFaq {
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
 
-  #titleAboutus{
-    text-align: center;
-    margin-top: 50PX;
-    margin-bottom: 50PX;
-  }
-  .footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    height: 40px;  
-    background: lemonchiffon;
- }
+#titleAboutus {
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  background: lemonchiffon;
+}
+
+#marker-button {
+  padding: 4px;
+  border-radius: 10%;
+  margin: 0.5em;
+  background-color: gold;
+  border-color: gold;
+}
