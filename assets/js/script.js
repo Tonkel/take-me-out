@@ -90,7 +90,7 @@ function findStuffNearLocation(location) {
         ListPiecePrice.textContent = "Price: " + ListItemPrice;
         ListPieceRating.appendChild(ListPiecePrice);
 
-        var listItemAddress = results[i].vicinity;
+        var listItemAddress = results[i].formatted_address;
 
         var listPieceAddress = document.createElement("button");
         listPieceAddress.setAttribute("class", "placeinfo");
@@ -154,7 +154,7 @@ function findMoreStuffNearLocation(location, radiusInput, searchInput) {
         ListPiecePrice.textContent = "Price: " + ListItemPrice;
         ListPieceRating.appendChild(ListPiecePrice);
 
-        var listItemAddress = results[i].vicinity;
+        var listItemAddress = results[i].formatted_address;
 
         var listPieceAddress = document.createElement("button");
         listPieceAddress.setAttribute("class", "placeinfo");
