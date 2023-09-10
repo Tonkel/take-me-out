@@ -356,6 +356,20 @@ function calculateAndDisplayRoute(
     .catch((e) => window.alert("Directions request failed due to " + e));
 }
 
+// AutoComplete search Input Function  ======================= start
+let autocomplete;
+
+function initAutocomplete() {
+  autocomplete = new google.maps.places.Autocomplete(
+    document.getElementById("input"),
+    {
+      types: ["establishment"],
+      componentRestrictions: { country: ["us"] },
+      fields: ["place_id", "geometry", "name"],
+    }
+  );
+}
+
 // initialize
 window.initMap = initMap;
 getLocation();
