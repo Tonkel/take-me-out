@@ -204,7 +204,7 @@ function createMarker(place) {
   });
 
   google.maps.event.addListener(marker, "click", (event) => {
-    var contentString = `<h1> ${place.name} </h1> <p> Rating (0-5): ${place.rating} </p> <p> Price (0-4): ${place.price_level} </p> <p> Address: <button id="marker-button"> ${place.vicinity} </button> </p>`;
+    var contentString = `<h1> ${place.name} </h1> <p> Rating (0-5): ${place.rating} </p> <p> Price (0-4): ${place.price_level} </p> <p> Address: <button id="marker-button"> ${place.formatted_address} </button> </p>`;
 
     var infowindow = new google.maps.InfoWindow({
       content: contentString,
