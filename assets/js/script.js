@@ -117,8 +117,8 @@ function findMoreStuffNearLocation(location, radius, searchInput) {
 
   const request = {
     location: myLocation,
-    fields: ["name", "geometry"],
-    type: [searchInput],
+    // fields: ["name", "geometry"],
+    query: searchInput,
     radius: radius,
   };
 
