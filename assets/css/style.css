@@ -235,10 +235,6 @@ footer {
   background-color: lemonchiffon;
 }
 
-#iconImage {
-  background-color: lightyellow;
-}
-
 #input {
   border-radius: 10px;
   margin: 3px;
@@ -259,17 +255,6 @@ footer {
   border-radius: 15px;
 }
 
-.content {
-  background-color: yellowgreen;
-  display: flex;
-  padding: 20px;
-}
-
-#currentWeather {
-  background-color: yellowgreen;
-  display: flex;
-  padding: 20px;
-}
 #placeList {
   display: flex;
   flex-wrap: wrap;
@@ -333,4 +318,21 @@ h4 {
   margin: 0.5em;
   background-color: gold;
   border-color: gold;
+}
+#currentWeather {
+  display: flex;
+  padding: 20px;
+}
+.content {
+  display: flex;
+  padding: 20px;
+}
+.card-content {
+  border: solid 2px yellow;
+  margin: auto 10px;
+  background: lemonchiffon;
+  padding: 10px;
+}
+div figure img {
+  background-color: skyblue;
 }
