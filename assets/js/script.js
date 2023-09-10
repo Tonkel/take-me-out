@@ -103,7 +103,7 @@ function findStuffNearLocation(location) {
 }
 
 //reload map with custom inputs
-function findMoreStuffNearLocation(location, radius, searchInput) {
+function findMoreStuffNearLocation(location, radiusInput, searchInput) {
   const myLocation = new google.maps.LatLng(
     location.latitude,
     location.longitude
@@ -119,7 +119,7 @@ function findMoreStuffNearLocation(location, radius, searchInput) {
     location: myLocation,
     // fields: ["name", "geometry"],
     query: searchInput,
-    radius: radius,
+    radius: radiusInput,
   };
 
   service = new google.maps.places.PlacesService(map);
@@ -218,16 +218,16 @@ function createMarker(place) {
 searchButton.addEventListener("click", function getResult() {
   //get inputs
   var searchInput = document.querySelector("#input").value;
-  var radius = radiusLabel.textContent;
+  var radiusInput = radiusLabel.textContent;
   //change radius input to meters
-  if (radius === "30-Miles") {
-    radius = "48280";
-  } else if (radius === "20-Miles") {
-    radius = "32187";
+  if (radiusInput === "30-Miles") {
+    radiusInput = "48280";
+  } else if (radiusInput === "20-Miles") {
+    radiusInput = "32187";
   } else {
-    radius = "16093";
+    radiusInput = "16093";
   }
-  console.log(radius);
+  console.log(radiusInput);
   //get location
   window.navigator.geolocation.getCurrentPosition(function (position) {
     latitude = position.coords.latitude;
@@ -238,7 +238,7 @@ searchButton.addEventListener("click", function getResult() {
     placeList.removeChild(placeList.firstChild);
   }
   //update map
-  findMoreStuffNearLocation({ latitude, longitude }, radius, searchInput);
+  findMoreStuffNearLocation({ latitude, longitude }, radiusInput, searchInput);
 });
 
 //choose radius
