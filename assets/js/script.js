@@ -368,7 +368,20 @@ function initAutocomplete() {
       fields: ["place_id", "geometry", "name"],
     }
   );
+  // add event listener to the dropdown lists from autocomplete
+  autocomplete.addEventListener("place_changed", selectedFromAutocompleteList);
 }
+
+function selectedFromAutocompleteList() {
+  var place = autocomplete.getPlace();
+  if (!place.geometry) {
+    document.getElementById("input").placeholder = "location type";
+  } else {
+    document.getElementById("details").innerHTML = place.name;
+  }
+}
+
+// Autocomplete search Input Function ======================= End
 
 // initialize
 window.initMap = initMap;
