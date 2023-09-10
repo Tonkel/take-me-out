@@ -25,11 +25,9 @@ var iconDisplay = document.querySelector("#iconImage");
 //get my current location
 function getLocation() {
   if (navigator.geolocation) {
-    console.log("Getting location");
     window.navigator.geolocation.getCurrentPosition(function (position) {
       latitude = position.coords.latitude;
       longitude = position.coords.longitude;
-      console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
       findStuffNearLocation({ latitude, longitude });
       getWeather();
     });
@@ -60,7 +58,6 @@ function findStuffNearLocation(location) {
 
   service = new google.maps.places.PlacesService(map);
   service.nearbySearch(request, (results, status) => {
-    console.log(results);
     if (status === google.maps.places.PlacesServiceStatus.OK && results) {
       for (let i = 0; i < results.length; i++) {
         createMarker(results[i]);
@@ -69,7 +66,6 @@ function findStuffNearLocation(location) {
       map.setCenter(results[0].geometry.location);
       for (let i = 0; i < results.length; i++) {
         var listItemName = results[i].name;
-        console.log(listItemName);
 
         var placeList = document.querySelector("#placeList");
         var listPieceName = document.createElement("h4");
@@ -124,7 +120,6 @@ function findMoreStuffNearLocation(location, radius, searchInput) {
 
   service = new google.maps.places.PlacesService(map);
   service.nearbySearch(request, (results, status) => {
-    console.log(results);
     if (status === google.maps.places.PlacesServiceStatus.OK && results) {
       for (let i = 0; i < results.length; i++) {
         createMarker(results[i]);
@@ -133,7 +128,6 @@ function findMoreStuffNearLocation(location, radius, searchInput) {
       map.setCenter(results[0].geometry.location);
       for (let i = 0; i < results.length; i++) {
         var listItemName = results[i].name;
-        console.log(listItemName);
 
         var placeList = document.querySelector("#placeList");
         var listPieceName = document.createElement("h4");
@@ -184,7 +178,6 @@ function initMap() {
 
   service = new google.maps.places.PlacesService(map);
   service.nearbySearch(request, (results, status) => {
-    console.log(results);
     if (status === google.maps.places.PlacesServiceStatus.OK && results) {
       for (let i = 0; i < results.length; i++) {
         createMarker(results[i]);
@@ -227,13 +220,13 @@ searchButton.addEventListener("click", function getResult() {
   } else {
     radius = "16093";
   }
-  console.log(radius);
+
   //get location
   window.navigator.geolocation.getCurrentPosition(function (position) {
     latitude = position.coords.latitude;
     longitude = position.coords.longitude;
   });
-  console.log(latitude, longitude);
+
   while (placeList.firstChild) {
     placeList.removeChild(placeList.firstChild);
   }
@@ -266,13 +259,10 @@ function getWeather() {
     "&appid=" +
     WeatherAPIKey +
     "&units=imperial";
-  console.log("getting weather");
+
   fetch(weatherUrl).then(function (response) {
     if (response.ok) {
-      console.log(response);
       response.json().then(function (data) {
-        console.log(data);
-
         var currentTemp = data.main.temp;
         currentWeather.textContent = "Current Temp: " + currentTemp;
 
@@ -314,7 +304,6 @@ document.addEventListener("click", function (event) {
       latitude = position.coords.latitude;
       longitude = position.coords.longitude;
       LatLng = `${latitude},${longitude}`;
-      console.log(LatLng);
 
       const directionsService = new google.maps.DirectionsService();
       const directionsRenderer = new google.maps.DirectionsRenderer();
