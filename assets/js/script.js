@@ -59,7 +59,7 @@ function findStuffNearLocation(location) {
   };
 
   service = new google.maps.places.PlacesService(map);
-  service.nearbySearch(request, (results, status) => {
+  service.textSearch(request, (results, status) => {
     console.log(results);
     if (status === google.maps.places.PlacesServiceStatus.OK && results) {
       for (let i = 0; i < results.length; i++) {
@@ -90,7 +90,7 @@ function findStuffNearLocation(location) {
         ListPiecePrice.textContent = "Price: " + ListItemPrice;
         ListPieceRating.appendChild(ListPiecePrice);
 
-        var listItemAddress = results[i].vicinity;
+        var listItemAddress = results[i].formatted_address;
 
         var listPieceAddress = document.createElement("button");
         listPieceAddress.setAttribute("class", "placeinfo");
@@ -103,7 +103,7 @@ function findStuffNearLocation(location) {
 }
 
 //reload map with custom inputs
-function findMoreStuffNearLocation(location, radius, searchInput) {
+function findMoreStuffNearLocation(location, radiusInput, searchInput) {
   const myLocation = new google.maps.LatLng(
     location.latitude,
     location.longitude
@@ -117,13 +117,13 @@ function findMoreStuffNearLocation(location, radius, searchInput) {
 
   const request = {
     location: myLocation,
-    fields: ["name", "geometry"],
-    type: [searchInput],
-    radius: radius,
+    // fields: ["name", "geometry"],
+    query: searchInput,
+    radius: radiusInput,
   };
 
   service = new google.maps.places.PlacesService(map);
-  service.nearbySearch(request, (results, status) => {
+  service.textSearch(request, (results, status) => {
     console.log(results);
     if (status === google.maps.places.PlacesServiceStatus.OK && results) {
       for (let i = 0; i < results.length; i++) {
@@ -154,7 +154,7 @@ function findMoreStuffNearLocation(location, radius, searchInput) {
         ListPiecePrice.textContent = "Price: " + ListItemPrice;
         ListPieceRating.appendChild(ListPiecePrice);
 
-        var listItemAddress = results[i].vicinity;
+        var listItemAddress = results[i].formatted_address;
 
         var listPieceAddress = document.createElement("button");
         listPieceAddress.setAttribute("class", "placeinfo");
@@ -204,7 +204,7 @@ function createMarker(place) {
   });
 
   google.maps.event.addListener(marker, "click", (event) => {
-    var contentString = `<h1> ${place.name} </h1> <p> Rating (0-5): ${place.rating} </p> <p> Price (0-4): ${place.price_level} </p> <p> Address: <button id="marker-button"> ${place.vicinity} </button> </p>`;
+    var contentString = `<h1> ${place.name} </h1> <p> Rating (0-5): ${place.rating} </p> <p> Price (0-4): ${place.price_level} </p> <p> Address: <button id="marker-button"> ${place.formatted_address} </button> </p>`;
 
     var infowindow = new google.maps.InfoWindow({
       content: contentString,
@@ -218,16 +218,16 @@ function createMarker(place) {
 searchButton.addEventListener("click", function getResult() {
   //get inputs
   var searchInput = document.querySelector("#input").value;
-  var radius = radiusLabel.textContent;
+  var radiusInput = radiusLabel.textContent;
   //change radius input to meters
-  if (radius === "30-Miles") {
-    radius = "48280";
-  } else if (radius === "20-Miles") {
-    radius = "32187";
+  if (radiusInput === "30-Miles") {
+    radiusInput = "48280";
+  } else if (radiusInput === "20-Miles") {
+    radiusInput = "32187";
   } else {
-    radius = "16093";
+    radiusInput = "16093";
   }
-  console.log(radius);
+  console.log(radiusInput);
   //get location
   window.navigator.geolocation.getCurrentPosition(function (position) {
     latitude = position.coords.latitude;
@@ -238,7 +238,7 @@ searchButton.addEventListener("click", function getResult() {
     placeList.removeChild(placeList.firstChild);
   }
   //update map
-  findMoreStuffNearLocation({ latitude, longitude }, radius, searchInput);
+  findMoreStuffNearLocation({ latitude, longitude }, radiusInput, searchInput);
 });
 
 //choose radius
@@ -355,6 +355,33 @@ function calculateAndDisplayRoute(
     })
     .catch((e) => window.alert("Directions request failed due to " + e));
 }
+
+// AutoComplete search Input Function  ======================= start
+let autocomplete;
+
+function initAutocomplete() {
+  autocomplete = new google.maps.places.Autocomplete(
+    document.getElementById("input"),
+    {
+      types: ["establishment"],
+      componentRestrictions: { country: ["us"] },
+      fields: ["place_id", "geometry", "name"],
+    }
+  );
+  // add event listener to the dropdown lists from autocomplete
+  autocomplete.addEventListener("place_changed", selectedFromAutocompleteList);
+}
+
+function selectedFromAutocompleteList() {
+  var place = autocomplete.getPlace();
+  if (!place.geometry) {
+    document.getElementById("input").placeholder = "location type";
+  } else {
+    document.getElementById("details").innerHTML = place.name;
+  }
+}
+
+// Autocomplete search Input Function ======================= End
 
 // initialize
 window.initMap = initMap;
