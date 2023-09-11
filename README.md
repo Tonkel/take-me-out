@@ -3,7 +3,7 @@ Take me out
 Simple overview of use/purpose.
 
 Description
-An in-depth paragraph about your project and overview of use.
+This is a website about 
 
 ex. Windows 10
 Installing
