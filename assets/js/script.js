@@ -69,7 +69,6 @@ function findStuffNearLocation(location) {
       map.setCenter(results[0].geometry.location);
       for (let i = 0; i < results.length; i++) {
         var listItemName = results[i].name;
-        console.log(listItemName);
 
         var placeList = document.querySelector("#placeList");
         var listPieceName = document.createElement("h4");
@@ -133,7 +132,6 @@ function findMoreStuffNearLocation(location, radiusInput, searchInput) {
       map.setCenter(results[0].geometry.location);
       for (let i = 0; i < results.length; i++) {
         var listItemName = results[i].name;
-        console.log(listItemName);
 
         var placeList = document.querySelector("#placeList");
         var listPieceName = document.createElement("h4");
@@ -224,9 +222,14 @@ searchButton.addEventListener("click", function getResult() {
     radiusInput = "48280";
   } else if (radiusInput === "20-Miles") {
     radiusInput = "32187";
-  } else {
+  } else if (radiusInput === "10-Miles") {
     radiusInput = "16093";
+  } else if (radiusInput === "5-Miles") {
+    radiusInput = "8047";
+  } else {
+    radiusInput = "4023";
   }
+
   console.log(radiusInput);
   //get location
   window.navigator.geolocation.getCurrentPosition(function (position) {
